@@ -9,7 +9,7 @@
 
 Console.WriteLine("Welcome to the Guessing Game!");
 Console.WriteLine("--------------------------------------------");
-Console.WriteLine("Would you like to guess the secret number? (four tries)");
+Console.WriteLine("Would you like to guess the secret number (1-100)?");
 Console.Write("Your Guess: ");
 string answer = Console.ReadLine();
 int parsedAnswer = Int32.Parse(answer);
@@ -27,9 +27,23 @@ int parsedAnswer = Int32.Parse(answer);
 
 //Phase Four 
 //show the number of tries 
-//end the loop
+//end the loop **
 //error the correct display on the last try doesn't show 
-int secretNumber = 36;
+
+// Phase 5
+// Use a random number between 1 and 100 instead of a hard-coded number.
+// The prompt should display the number of guesses the user has left.
+
+//Phase 6 
+// Inform the user if their guess was too high or too low, when they guess incorrectly.
+int RandomNumber()
+{
+    Random r = new Random();
+    int genRand = r.Next(0, 19);
+    // Console.WriteLine("Random Number = " + genRand);
+    return genRand;
+}
+int secretNumber = RandomNumber();
 int numOfTries = 1;
 while (numOfTries < 4)
 {
@@ -42,8 +56,8 @@ while (numOfTries < 4)
     {
         Console.WriteLine("otherwise display a failure message.");
     }
-    numOfTries++;
-    Console.Write($"This is guess number {(numOfTries)}: ");
+    Console.Write($"You have {(4 - numOfTries)} guess left: ");
     answer = Console.ReadLine();
     parsedAnswer = Int32.Parse(answer);
+    numOfTries++;
 }
