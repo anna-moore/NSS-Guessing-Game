@@ -52,9 +52,13 @@ while (numOfTries < 4)
         Console.WriteLine("the guess is correct");
         return;
     }
-    else
+    else if (parsedAnswer > secretNumber)
     {
-        Console.WriteLine("otherwise display a failure message.");
+        Console.WriteLine("Your guess was too high.");
+    }
+    else if (parsedAnswer < secretNumber)
+    {
+        Console.WriteLine("Your guess was too low.");
     }
     Console.Write($"You have {(4 - numOfTries)} guess left: ");
     answer = Console.ReadLine();
