@@ -9,7 +9,7 @@
 
 Console.WriteLine("Welcome to the Guessing Game!");
 Console.WriteLine("--------------------------------------------");
-Console.WriteLine("Would you like to guess the secret number?");
+Console.WriteLine("Would you like to guess the secret number? (four tries)");
 Console.Write("Your Guess: ");
 string answer = Console.ReadLine();
 int parsedAnswer = Int32.Parse(answer);
@@ -20,13 +20,30 @@ int parsedAnswer = Int32.Parse(answer);
 // No longer display the user's guess. They know what they guessed, right?
 // Compare the user's guess with the secret number. Display a success message if the guess is correct, otherwise display a failure message.
 
-int secretNumber = 36;
+//Phase Three
+//The program should be updated to...
+//Give the user four chances to guess the number.
+//Continue to display the success or failure messages as in phase 2
 
-if (parsedAnswer == secretNumber)
+//Phase Four 
+//show the number of tries 
+//end the loop
+//error the correct display on the last try doesn't show 
+int secretNumber = 36;
+int numOfTries = 1;
+while (numOfTries < 4)
 {
-    Console.WriteLine("the guess is correct");
-}
-else
-{
-    Console.WriteLine("otherwise display a failure message.");
+    if (parsedAnswer == secretNumber)
+    {
+        Console.WriteLine("the guess is correct");
+        return;
+    }
+    else
+    {
+        Console.WriteLine("otherwise display a failure message.");
+    }
+    numOfTries++;
+    Console.Write($"This is guess number {(numOfTries)}: ");
+    answer = Console.ReadLine();
+    parsedAnswer = Int32.Parse(answer);
 }
