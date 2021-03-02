@@ -10,6 +10,7 @@
 Console.WriteLine("Welcome to the Guessing Game!");
 Console.WriteLine("--------------------------------------------");
 Console.WriteLine("Would you like to guess the secret number (1-100)?");
+
 Console.Write("Your Guess: ");
 string answer = Console.ReadLine();
 int parsedAnswer = Int32.Parse(answer);
@@ -36,20 +37,32 @@ int parsedAnswer = Int32.Parse(answer);
 
 //Phase 6 
 // Inform the user if their guess was too high or too low, when they guess incorrectly.
+
+//Phase 7
+// Prompt the user for a difficulty level before they are prompted to guess the number.
+// The difficulty level should determine how many guesses the user gets. The difficulty levels should be:
+// Easy - this gives the user eight guesses.
+// Medium - this gives the user six guesses.
+// Hard - this gives the user four guesses.
+
 int RandomNumber()
 {
     Random r = new Random();
     int genRand = r.Next(0, 19);
-    // Console.WriteLine("Random Number = " + genRand);
+    Console.WriteLine("Random Number = " + genRand);
     return genRand;
 }
 int secretNumber = RandomNumber();
-int numOfTries = 1;
-while (numOfTries < 4)
+for (int numOfTries = 3; numOfTries > -1; numOfTries--)
 {
     if (parsedAnswer == secretNumber)
     {
         Console.WriteLine("the guess is correct");
+        return;
+    }
+    else if (parsedAnswer != secretNumber && numOfTries == 0)
+    {
+        Console.WriteLine("Out of Luck!");
         return;
     }
     else if (parsedAnswer > secretNumber)
@@ -60,8 +73,7 @@ while (numOfTries < 4)
     {
         Console.WriteLine("Your guess was too low.");
     }
-    Console.Write($"You have {(4 - numOfTries)} guess left: ");
+    Console.Write($"You have {(numOfTries)} guess left: ");
     answer = Console.ReadLine();
     parsedAnswer = Int32.Parse(answer);
-    numOfTries++;
 }
